@@ -1,6 +1,39 @@
 import React, { useState } from "react";
 import "./App.css";
 
+// Leisure activity suggestions based on time + energy
+const leisureSuggestions = {
+  mini_low: [
+    "Do a 4-7-8 breathing cycle",
+    "Smell your favorite candle or perfume",
+    "Look at funny memes or photos",
+    "Close your eyes and listen to your surroundings for 1 minute",
+    "Do 10 seconds of deep stretching"
+  ],
+  short_medium: [
+    "Sketch a doodle with no pressure",
+    "Try a 10-minute guided meditation",
+    "Water your plants",
+    "Make a comfort playlist",
+    "Watch a YouTube video"
+  ],
+  medium_high: [
+    "Put on music and dance it out",
+    "Take a walk around the block",
+    "Cook something fun but simple",
+    "Rearrange a small corner of your space",
+    "Call a loved one"
+  ],
+  long_any: [
+    "Read a book or comic you enjoy",
+    "Try a new recipe",
+    "Watch a movie",
+    "Do a slow creative task like painting",
+    "Play a cozy video game"
+  ]
+};
+
+
 // Random Helper Function
 function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -43,6 +76,7 @@ function generateSuggestions() {
   setSuggestions(newSuggestions);
 }
 
+  // Chore function
 function getChoreSuggestion() {
   const highEnergy = [
     "Clean a whole room",
@@ -63,7 +97,7 @@ function getChoreSuggestion() {
   const lowEnergy = [
     "Throw away 3 things",
     "Wipe one surface",
-    "Sort one paper pile",
+    "Sort one mail pile",
     "Empty your bag or pockets",
     "Clear off one small surface"
   ];
@@ -73,13 +107,29 @@ function getChoreSuggestion() {
   return getRandomItem(lowEnergy);
 }
 
-
-  function getLeisureSuggestion() {
-    if (time === "long" && energy === "low") return "Watch a movie";
-    if (time === "short") return "Scroll your social media feed";
-    return "Listen to your favorite song";
+  // Leisure function
+function getLeisureSuggestion() {
+  if (time === "mini" && energy === "low") {
+    return getRandomItem(leisureSuggestions.mini_low);
   }
 
+  if (time === "short" && energy === "medium") {
+    return getRandomItem(leisureSuggestions.short_medium);
+  }
+
+  if (time === "medium" && energy === "high") {
+    return getRandomItem(leisureSuggestions.medium_high);
+  }
+
+  if (time === "long") {
+    return getRandomItem(leisureSuggestions.long_any);
+  }
+
+  // fallback if combo isn't handled
+  return "Take a moment to breathe or do something comforting.";
+}
+
+  // work function
   function getWorkSuggestion() {
     if (mood === "motivated") return "Start a new task";
     if (mood === "anxious") return "Do a 5-minute brain dump";
