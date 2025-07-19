@@ -10,7 +10,7 @@ function MovieSuggestion() {
 
   return (
     <div>
-      <h3>Popular Movie Picks</h3>
+      <h3>Popular Movie Picks to Get You Started</h3>
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>{movie.title}</li>
