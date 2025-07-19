@@ -6,13 +6,16 @@ function App() {
   const [time, setTime] = useState("");
   const [energy, setEnergy] = useState("");
 
-// Logic Function for Suggestion Button
+  // State to hold suggestions
 const [suggestions, setSuggestions] = useState({
   chore: "",
   leisure: "",
   work: ""
 });
+  // State to hold saved suggestion
+  const [savedSuggestion, setSavedSuggestion] = useState(null);
 
+  //Logic functions to generate suggestions based on mood, time, and energy
 function generateSuggestions() {
   if (!mood || !time || !energy) {
     alert("Please fill out all inputs first.");
@@ -37,7 +40,7 @@ function generateSuggestions() {
 
   function getLeisureSuggestion() {
     if (time === "long" && energy === "low") return "Watch a movie";
-    if (time === "short") return "Scroll your saved memes";
+    if (time === "short") return "Scroll your social media feed";
     return "Listen to your favorite song";
   }
 
@@ -112,6 +115,21 @@ function generateSuggestions() {
       <li><strong>Leisure:</strong> {suggestions.leisure}</li>
       <li><strong>Work:</strong> {suggestions.work}</li>
     </ul>
+    {/* Shuffle + Save Buttons */}
+<div className="button-group">
+  <button onClick={generateSuggestions}>🔀 Shuffle</button>
+  <button onClick={() => setSavedSuggestion(suggestions)}>💾 Save</button>
+  {savedSuggestion && (
+  <div className="saved">
+    <h2>Saved Suggestion</h2>
+    <ul>
+      <li><strong>Chore:</strong> {savedSuggestion.chore}</li>
+      <li><strong>Leisure:</strong> {savedSuggestion.leisure}</li>
+      <li><strong>Work:</strong> {savedSuggestion.work}</li>
+    </ul>
+  </div>
+)}
+</div>
   </div>
 )}
     </div>
