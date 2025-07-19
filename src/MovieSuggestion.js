@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchPopularMovies } from "./tmdb";
+import fallbackMovie from "./assets/fallback-movie.jpg";
 
 function MovieSuggestion() {
   const [movies, setMovies] = useState([]);
@@ -22,9 +23,13 @@ function MovieSuggestion() {
   {movies[0]?.poster_path && (
     <div className="movie-poster">
       <img
-        src={`https://image.tmdb.org/t/p/w342${movies[0].poster_path}`}
-        alt={movies[0].title}
-      />
+  src={
+    movies[0]?.poster_path
+      ? `https://image.tmdb.org/t/p/w342${movies[0].poster_path}`
+      : fallbackMovie
+  }
+  alt={movies[0]?.poster_path ? movies[0].title : "Default movie poster"}
+/>
     </div>
   )}
 </div>
