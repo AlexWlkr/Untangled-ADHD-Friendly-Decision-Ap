@@ -9,6 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
+  background: url('./assets/website-background-1.png') no-repeat center center fixed;
   padding: 2rem;
   color: rgb(53, 53, 53);
 }

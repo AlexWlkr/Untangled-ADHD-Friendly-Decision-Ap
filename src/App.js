@@ -226,7 +226,7 @@ React.useEffect(() => {
 
   return (
     <div className="App">
-      <h1>What Should I Do?</h1>
+      <h1>Untangled</h1>
       <p>I need help deciding what to do right now.</p>
 
       {/* Mood Input */}
