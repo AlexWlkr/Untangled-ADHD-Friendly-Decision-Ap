@@ -12,7 +12,7 @@ function MovieSuggestion() {
     <div>
       <h3>Popular Movie Picks to Get You Started</h3>
       <ul>
-        {movies.map((movie) => (
+       {movies.slice(0, 5).map((movie) => (
           <li key={movie.id}>{movie.title}</li>
         ))}
       </ul>
