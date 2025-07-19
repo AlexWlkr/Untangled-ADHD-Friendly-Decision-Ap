@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
 
+// Random Helper Function
+function getRandomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Main App component
 function App() {
   const [mood, setMood] = useState("");
   const [time, setTime] = useState("");
@@ -37,11 +43,36 @@ function generateSuggestions() {
   setSuggestions(newSuggestions);
 }
 
-  function getChoreSuggestion() {
-    if (energy === "high") return "Clean a whole room";
-    if (energy === "medium") return "Organize one drawer";
-    return "Throw away 3 things";
-  }
+function getChoreSuggestion() {
+  const highEnergy = [
+    "Clean a whole room",
+    "Do a 15-minute speed clean",
+    "Vacuum all floors",
+    "Declutter a shelf",
+    "Take out the trash + recycling"
+  ];
+
+  const mediumEnergy = [
+    "Do the dishes",
+    "Organize one drawer",
+    "Wipe down your desk",
+    "Start a laundry load",
+    "Put away 10 things"
+  ];
+
+  const lowEnergy = [
+    "Throw away 3 things",
+    "Wipe one surface",
+    "Sort one paper pile",
+    "Empty your bag or pockets",
+    "Clear off one small surface"
+  ];
+
+  if (energy === "high") return getRandomItem(highEnergy);
+  if (energy === "medium") return getRandomItem(mediumEnergy);
+  return getRandomItem(lowEnergy);
+}
+
 
   function getLeisureSuggestion() {
     if (time === "long" && energy === "low") return "Watch a movie";
