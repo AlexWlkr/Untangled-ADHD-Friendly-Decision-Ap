@@ -15,6 +15,11 @@ const [suggestions, setSuggestions] = useState({
   // State to hold saved suggestion
   const [savedSuggestion, setSavedSuggestion] = useState(null);
 
+    // State to hold timer values
+  const [timeLeft, setTimeLeft] = useState(0); // Time in seconds
+const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+
   //Logic functions to generate suggestions based on mood, time, and energy
 function generateSuggestions() {
   if (!mood || !time || !energy) {
@@ -50,7 +55,7 @@ function generateSuggestions() {
     return "Make a short to-do list";
   }
 
-    // clear all button funciton
+    // clear all button function
 function clearAll() {
   setMood("");
   setTime("");
@@ -62,6 +67,27 @@ function clearAll() {
   });
   setSavedSuggestion(null);
   localStorage.removeItem("savedSuggestion");
+  
+     // timer function
+
+  function startTimer() {
+  if (isTimerRunning) return;
+
+  setTimeLeft(300); // 5 minutes
+  setIsTimerRunning(true);
+
+  const timerInterval = setInterval(() => {
+    setTimeLeft((prevTime) => {
+      if (prevTime <= 1) {
+        clearInterval(timerInterval);
+        setIsTimerRunning(false);
+        alert("🎉 Great job! You showed up for yourself. Keep it going!");
+        return 0;
+      }
+      return prevTime - 1;
+    });
+  }, 1000);
+}
 }
 
 
@@ -153,6 +179,19 @@ React.useEffect(() => {
     <button onClick={clearAll}>🧹 Clear All</button>
   {savedSuggestion && (
   <div className="saved">
+    <div className="focus-timer">
+  <p>This timer helps you stay committed to your choice for at least 5 minutes of focused effort.</p>
+  <h3>Focus Timer</h3>
+  <p>
+    Time Left:{" "}
+    {Math.floor(timeLeft / 60).toString().padStart(2, "0")}:
+    {(timeLeft % 60).toString().padStart(2, "0")}
+  </p>
+  <button onClick={startTimer} disabled={isTimerRunning}>
+    {isTimerRunning ? "Stay Focused..." : "Start Focus Timer"}
+  </button>
+</div>
+
     <h2>Saved Suggestion</h2>
     <ul>
       <li><strong>Chore:</strong> {savedSuggestion.chore}</li>
