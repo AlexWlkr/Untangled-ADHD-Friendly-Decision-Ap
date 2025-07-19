@@ -213,7 +213,13 @@ button:hover {
 
 .movie-poster img {
   width: 150px;
+  height: 225px; /* keeps all posters same height */
+  object-fit: cover;
   border-radius: 10px;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
   margin-top: 1.75em;
+}
+
+.movie-poster {
+  min-width: 150px;
 }
