@@ -74,7 +74,7 @@ button:hover {
   margin-top: 1rem;
 }
 
-.results, .saved {
+.results {
   margin-top: 2rem;
   border: 1px solid rgb(163, 163, 163);
   padding: 1.5rem;
@@ -82,8 +82,7 @@ button:hover {
   background-color: #fafafa;
 }
 
-.results h2,
-.saved h2 {
+.results h2 {
   margin-bottom: 1rem;
 }
 
@@ -95,4 +94,32 @@ button:hover {
   border: 1px solid rgb(255, 208, 115);
   border-radius: 1rem;
   text-align: center;
+}
+
+/* SAVED SUGGESTIONS */
+.saved {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 2px solid #ccc;
+  border-radius: 1rem;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.saved h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.saved ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.saved li {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #444;
 }
