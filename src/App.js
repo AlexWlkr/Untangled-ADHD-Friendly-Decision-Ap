@@ -50,6 +50,20 @@ function generateSuggestions() {
     return "Make a short to-do list";
   }
 
+    // clear all button funciton
+  function clearAll() {
+  setMood("");
+  setTime("");
+  setEnergy("");
+  setSuggestions({
+    chore: "",
+    leisure: "",
+    work: ""
+  });
+  setSavedSuggestion(null);
+}
+
+
   return (
     <div className="App">
       <h1>What Should I Do?</h1>
@@ -115,10 +129,11 @@ function generateSuggestions() {
       <li><strong>Leisure:</strong> {suggestions.leisure}</li>
       <li><strong>Work:</strong> {suggestions.work}</li>
     </ul>
-    {/* Shuffle + Save Buttons */}
+    {/* Shuffle + Save + Clear Buttons */}
 <div className="button-group">
   <button onClick={generateSuggestions}>🔀 Shuffle</button>
   <button onClick={() => setSavedSuggestion(suggestions)}>💾 Save</button>
+    <button onClick={clearAll}>🧹 Clear All</button>
   {savedSuggestion && (
   <div className="saved">
     <h2>Saved Suggestion</h2>
