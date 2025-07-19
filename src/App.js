@@ -100,7 +100,20 @@ function generateSuggestions() {
   </select>
              {/* Temporary display to test */}
       <p>Your energy: {energy}</p>
+{/* Suggestion Button */}
+<button onClick={generateSuggestions}>Get Suggestions</button>
 
+{/* Display Suggestions */}
+{suggestions.chore && (
+  <div className="results">
+    <h2>Here's what we suggest:</h2>
+    <ul>
+      <li><strong>Chore:</strong> {suggestions.chore}</li>
+      <li><strong>Leisure:</strong> {suggestions.leisure}</li>
+      <li><strong>Work:</strong> {suggestions.work}</li>
+    </ul>
+  </div>
+)}
     </div>
   );
 }
