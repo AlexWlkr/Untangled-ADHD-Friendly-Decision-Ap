@@ -182,3 +182,38 @@ button:hover {
 .movie-suggestions li:hover {
   background: #ffd9bd;
 }
+
+/* MOVIE POSTER */
+.movie-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffe5d4;
+  border: 2px solid #f7bba5;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+.movie-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-list li {
+  background: #fff3ed;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.movie-poster img {
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+  margin-top: 1.75em;
+}
