@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import MovieSuggestion from "./MovieSuggestion";
+
 
 // Leisure activity suggestions based on time + energy
 const leisureSuggestions = {
