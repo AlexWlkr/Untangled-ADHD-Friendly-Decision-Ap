@@ -6,6 +6,47 @@ function App() {
   const [time, setTime] = useState("");
   const [energy, setEnergy] = useState("");
 
+// Logic Function for Suggestion Button
+const [suggestions, setSuggestions] = useState({
+  chore: "",
+  leisure: "",
+  work: ""
+});
+
+function generateSuggestions() {
+  if (!mood || !time || !energy) {
+    alert("Please fill out all inputs first.");
+    return;
+  }
+
+  // Basic example logic
+  const newSuggestions = {
+    chore: getChoreSuggestion(),
+    leisure: getLeisureSuggestion(),
+    work: getWorkSuggestion()
+  };
+
+  setSuggestions(newSuggestions);
+}
+
+  function getChoreSuggestion() {
+    if (energy === "high") return "Clean a whole room";
+    if (energy === "medium") return "Organize one drawer";
+    return "Throw away 3 things";
+  }
+
+  function getLeisureSuggestion() {
+    if (time === "long" && energy === "low") return "Watch a movie";
+    if (time === "short") return "Scroll your saved memes";
+    return "Listen to your favorite song";
+  }
+
+  function getWorkSuggestion() {
+    if (mood === "motivated") return "Start a new task";
+    if (mood === "anxious") return "Do a 5-minute brain dump";
+    return "Make a short to-do list";
+  }
+
   return (
     <div className="App">
       <h1>What Should I Do?</h1>
@@ -49,7 +90,7 @@ function App() {
       <label htmlFor="energy">Energy Level:</label>
       <select
         id="time"
-        value={time}
+        value={energy}
         onChange={(e) => setEnergy(e.target.value)}
       >
         <option value="">-- Select your energy level --</option>
