@@ -51,7 +51,7 @@ function generateSuggestions() {
   }
 
     // clear all button funciton
-  function clearAll() {
+function clearAll() {
   setMood("");
   setTime("");
   setEnergy("");
@@ -61,7 +61,16 @@ function generateSuggestions() {
     work: ""
   });
   setSavedSuggestion(null);
+  localStorage.removeItem("savedSuggestion");
 }
+
+
+React.useEffect(() => {
+  const saved = localStorage.getItem("savedSuggestion");
+  if (saved) {
+    setSavedSuggestion(JSON.parse(saved));
+  }
+}, []);
 
 
   return (
@@ -132,7 +141,15 @@ function generateSuggestions() {
     {/* Shuffle + Save + Clear Buttons */}
 <div className="button-group">
   <button onClick={generateSuggestions}>🔀 Shuffle</button>
-  <button onClick={() => setSavedSuggestion(suggestions)}>💾 Save</button>
+<button
+  onClick={() => {
+    setSavedSuggestion(suggestions);
+    localStorage.setItem("savedSuggestion", JSON.stringify(suggestions));
+  }}
+>
+  💾 Save
+</button>
+
     <button onClick={clearAll}>🧹 Clear All</button>
   {savedSuggestion && (
   <div className="saved">
