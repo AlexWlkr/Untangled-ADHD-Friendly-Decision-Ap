@@ -291,6 +291,11 @@ React.useEffect(() => {
       <li><strong>Leisure:</strong> {suggestions.leisure}</li>
       <li><strong>Work:</strong> {suggestions.work}</li>
     </ul>
+    {/* Show movie picks only if leisure includes "movie" */}
+{suggestions.leisure.toLowerCase().includes("movie") && (
+  <MovieSuggestion />
+)}
+
     {/* Shuffle + Save + Clear Buttons */}
 <div className="button-group">
   <button onClick={generateSuggestions}>🔀 Shuffle</button>
