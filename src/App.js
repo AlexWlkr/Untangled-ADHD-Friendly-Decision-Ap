@@ -67,7 +67,7 @@ function clearAll() {
   });
   setSavedSuggestion(null);
   localStorage.removeItem("savedSuggestion");
-  
+}
      // timer function
 
   function startTimer() {
@@ -87,7 +87,6 @@ function clearAll() {
       return prevTime - 1;
     });
   }, 1000);
-}
 }
 
 
