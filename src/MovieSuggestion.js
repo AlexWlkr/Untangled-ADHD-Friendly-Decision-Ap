@@ -9,7 +9,7 @@ function MovieSuggestion() {
   }, []);
 
   return (
-    <div>
+    <div className="movie-suggestions">
       <h3>Popular Movie Picks to Get You Started</h3>
       <ul>
        {movies.slice(0, 5).map((movie) => (
