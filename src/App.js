@@ -181,11 +181,13 @@ React.useEffect(() => {
     <div className="focus-timer">
   <p>This timer helps you stay committed to your choice for at least 5 minutes of focused effort.</p>
   <h3>Focus Timer</h3>
-  <p>
-    Time Left:{" "}
+<p>
+  Time Left:{" "}
+  <span className="countdown-animate">
     {Math.floor(timeLeft / 60).toString().padStart(2, "0")}:
     {(timeLeft % 60).toString().padStart(2, "0")}
-  </p>
+  </span>
+</p>
   <button onClick={startTimer} disabled={isTimerRunning}>
     {isTimerRunning ? "Stay Focused..." : "Start Focus Timer"}
   </button>
