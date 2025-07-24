@@ -229,7 +229,7 @@ React.useEffect(() => {
   return (
     <div className="App">
       <h1>Untangled</h1>
-      <p>🧶 All knots make sense when you pause and check in.</p>
+      <p>🧶 All knots make sense when you pause and check in. Three quick questions. One helpful suggestion.</p>
 
       {/* Mood Input */}
       <label htmlFor="mood">Mood:</label>
