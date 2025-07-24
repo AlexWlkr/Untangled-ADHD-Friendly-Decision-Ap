@@ -238,7 +238,7 @@ React.useEffect(() => {
         value={mood}
         onChange={(e) => setMood(e.target.value)}
       >
-        <option value="">-- Select your mood --</option>
+        <option value="">-- How are you feeling? --</option>
         <option value="calm">Calm</option>
         <option value="anxious">Anxious</option>
         <option value="bored">Bored</option>
@@ -256,7 +256,7 @@ React.useEffect(() => {
         value={time}
         onChange={(e) => setTime(e.target.value)}
       >
-        <option value="">-- Select time --</option>
+        <option value="">-- How much time do you have? --</option>
            <option value="mini">Less than 5 minutes</option>
         <option value="short">10-20 minutes</option>
         <option value="medium">30–60 minutes</option>
@@ -266,7 +266,7 @@ React.useEffect(() => {
       <p>Your time: {time}</p>
 
        {/* Energy Input */}
-      <label htmlFor="energy">Energy Level:</label>
+      <label htmlFor="energy">How much energy do you have?:</label>
       <select
         id="time"
         value={energy}
