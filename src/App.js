@@ -266,13 +266,13 @@ React.useEffect(() => {
       <p>Your time: {time}</p>
 
        {/* Energy Input */}
-      <label htmlFor="energy">How much energy do you have?:</label>
+      <label htmlFor="energy">Energy Level:</label>
       <select
         id="time"
         value={energy}
         onChange={(e) => setEnergy(e.target.value)}
       >
-        <option value="">-- Select your energy level --</option>
+        <option value="">-- How much energy do you have today? --</option>
            <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
