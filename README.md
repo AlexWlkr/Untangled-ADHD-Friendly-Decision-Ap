@@ -1,4 +1,4 @@
-# Untangled 🧠✨
+# Untangled 
 
 **Untangled** is a decision-support tool built in React to help reduce overwhelm and support users — especially those with ADHD or anxiety — in getting unstuck.
 
@@ -6,14 +6,14 @@ The idea came from my own experience: sometimes I know I need to do *something*,
 
 It’s my second project in my frontend dev portfolio, and one I’m especially proud of because it merges technical learning with something deeply personal and useful.
 
-### 🔍 What It Does
+### What It Does
 - Suggests actions based on user inputs like mood, energy, and need
 - Built-in 5-minute motivational timer to help you start (instead of spiral)
 - Shuffle and save suggestions that resonate
 - Dynamically recommends movies (via TMDB API) for when you just need a break
 - Uses local storage to persist saved ideas and countdown state
 
-### 💻 Tech Stack
+### Tech Stack
 - React (functional components and useState)
 - CSS for styling (custom + responsive)
 - TMDB API integration
@@ -38,6 +38,8 @@ I’ve spent the last few years working in social media and digital strategy, wi
 I’m Alex Walker — a social strategist turned developer, now building tools that blend tech, care, and community. I'm currently seeking a junior frontend dev role on a mission-driven team.
 
 Let’s create things that help people feel more in control — and less alone.
+
+This project was built independently with support from ChatGPT as a learning and debugging tool. Every line of code was reviewed and customized as part of my frontend development practice.
 
 —
 Alex Walker
