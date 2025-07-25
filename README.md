@@ -1,71 +1,43 @@
-# Getting Started with Create React App
+# Untangled 🧠✨
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Untangled** is a decision-support tool built in React to help reduce overwhelm and support users — especially those with ADHD or anxiety — in getting unstuck.
 
-## Available Scripts
+The idea came from my own experience: sometimes I know I need to do *something*, but I can’t decide what. This app helps break that paralysis with kind nudges and smart suggestions based on how you're feeling.
 
-In the project directory, you can run:
+It’s my second project in my frontend dev portfolio, and one I’m especially proud of because it merges technical learning with something deeply personal and useful.
 
-### `npm start`
+### 🔍 What It Does
+- Suggests actions based on user inputs like mood, energy, and need
+- Built-in 5-minute motivational timer to help you start (instead of spiral)
+- Shuffle and save suggestions that resonate
+- Dynamically recommends movies (via TMDB API) for when you just need a break
+- Uses local storage to persist saved ideas and countdown state
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 💻 Tech Stack
+- React (functional components and useState)
+- CSS for styling (custom + responsive)
+- TMDB API integration
+- Local storage for persistence
+- Accessibility practices in progress
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Why I Built This
+I’ve spent the last few years working in social media and digital strategy, with a focus on mental health, equity, and community impact — helping people navigate big life transitions, burnout, and systemic barriers. I have a master’s in clinical social work, and I’m currently retraining in frontend development through Skillcrush to build tools that are both functional and human-centered.
 
-### `npm test`
+**Untangled** born out of supporting my fiancé through challenges with focus, stress, and decision-making — and realizing how often we both needed something simple to cut through the noise. I wanted to build a tool that felt supportive, empowering, and genuinely helpful during those stuck moments.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### What’s Next
+- Add sound or animation to make the timer more motivating
+- Let users create custom suggestions
+- Add dark mode and accessibility refinements
+- Expand suggestions with behavioral science research
 
-### `npm run build`
+### Try it out
+[Live Site](https://getuntangled.netlify.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Let’s Connect
+I’m Alex Walker — a social strategist turned developer, now building tools that blend tech, care, and community. I'm currently seeking a junior frontend dev role on a mission-driven team.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Let’s create things that help people feel more in control — and less alone.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# what-should-i-do-bot
+—
+Alex Walker
