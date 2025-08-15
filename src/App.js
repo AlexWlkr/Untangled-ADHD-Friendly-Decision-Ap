@@ -228,24 +228,6 @@ React.useEffect(() => {
 
   return (
     
-    <>
-    {/* DEBUG BANNER */}
-    <div style={{ background: 'hotpink', padding: '12px', textAlign: 'center' }}>
-      <strong>DEBUG MODE: If you see this, you are editing the right file.</strong>
-    </div>
-
-    {/* QUICK NETWORK TEST BUTTON: should show a request in DevTools > Network */}
-    <button
-      onClick={async () => {
-        console.log("[TEST] about to fetch JSONPlaceholder");
-        const r = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-        const j = await r.json();
-        console.log("[TEST] got:", j);
-      }}
-      style={{ margin: '12px', padding: '8px 12px' }}
-    >
-      Test Fetch
-    </button>
 
     <div className="App">
       <h1>Untangled</h1>
@@ -358,7 +340,6 @@ React.useEffect(() => {
   </div>
 )}
     </div>
-  </>
 );
 }
 
