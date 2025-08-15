@@ -5,9 +5,16 @@ import fallbackMovie from "./assets/fallback-movie-poster.jpg";
 function MovieSuggestion() {
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    fetchPopularMovies().then(setMovies);
-  }, []);
+useEffect(() => {
+  console.log("[MovieSuggestion] mounted");
+  console.log("fetchPopularMovies is", fetchPopularMovies);
+  fetchPopularMovies()
+    .then((arr) => {
+      console.log("TMDB popular results:", arr);
+      setMovies(arr);
+    })
+    .catch((e) => console.error("TMDB fetch failed:", e));
+}, []);
 
   return (
 <div className="movie-box">
