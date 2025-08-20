@@ -1,5 +1,3 @@
-
-import React from "react";
 const workSuggestions = {
   calm_low: [
     "Journal quietly for 5 minutes",
@@ -43,4 +41,4 @@ const workSuggestions = {
   ]
 };
 
-export default WorkSuggestion;
+export default workSuggestions;

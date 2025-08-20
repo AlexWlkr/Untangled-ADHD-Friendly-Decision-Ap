@@ -1,20 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import MovieSuggestion from "./MovieSuggestion";
-import leisureSuggestion from "./leisureSuggestion";
-import workSuggestion from "./workSuggestion";
-
-
-// Leisure activity suggestions based on time + energy
-    return (
-  <LeisureSuggestion />
-    );
-// work activity suggestions based on mood + energy
-    return (
-  <WorkSuggestion />
-    );
-
-
+import leisureSuggestions from "./leisureSuggestions";
+import workSuggestions from "./workSuggestions";
 
 // Random Helper Function
 function getRandomItem(arr) {
@@ -206,7 +194,7 @@ React.useEffect(() => {
        {/* Energy Input */}
       <label htmlFor="energy">Energy Level:</label>
       <select
-        id="time"
+        id="energy"
         value={energy}
         onChange={(e) => setEnergy(e.target.value)}
       >

@@ -1,5 +1,3 @@
-import React from "react";
-
 const leisureSuggestions = {
   mini_low: [
     "Do a 4-7-8 breathing cycle",
@@ -31,4 +29,4 @@ const leisureSuggestions = {
   ]
 };
 
-export default LeisureSuggestion;
+export default leisureSuggestions;
