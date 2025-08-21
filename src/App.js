@@ -172,9 +172,6 @@ React.useEffect(() => {
         <option value="motivated">Motivated</option>
       </select>
 
-      {/* Temporary display to test */}
-      <p>Your mood: {mood}</p>
-
         {/* Time Input */}
       <label htmlFor="time">Time Available:</label>
       <select
