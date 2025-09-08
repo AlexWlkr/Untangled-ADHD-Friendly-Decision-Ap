@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchPopularMovies } from "./tmdb";
 import fallbackMovie from "./assets/fallback-movie-poster.jpg";
 
