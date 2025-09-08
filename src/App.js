@@ -16,154 +16,147 @@ function App() {
   const [energy, setEnergy] = useState("");
 
   // State to hold suggestions
-const [suggestions, setSuggestions] = useState({
-  chore: "",
-  leisure: "",
-  work: ""
-});
+  const [suggestions, setSuggestions] = useState({
+    chore: "",
+    leisure: "",
+    work: "",
+  });
   // State to hold saved suggestion
   const [savedSuggestion, setSavedSuggestion] = useState(null);
 
-    // State to hold timer values
+  // State to hold timer values
   const [timeLeft, setTimeLeft] = useState(0); // Time in seconds
-const [isTimerRunning, setIsTimerRunning] = useState(false);
-
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
 
   //Logic functions to generate suggestions based on mood, time, and energy
-function generateSuggestions() {
-  if (!mood || !time || !energy) {
-    alert("Please fill out all inputs first.");
-    return;
+  function generateSuggestions() {
+    if (!mood || !time || !energy) {
+      alert("Please fill out all inputs first.");
+      return;
+    }
+
+    // Basic example logic
+    const newSuggestions = {
+      chore: getChoreSuggestion(),
+      leisure: getLeisureSuggestion(),
+      work: getWorkSuggestion(),
+    };
+
+    setSuggestions(newSuggestions);
   }
-
-  // Basic example logic
-  const newSuggestions = {
-    chore: getChoreSuggestion(),
-    leisure: getLeisureSuggestion(),
-    work: getWorkSuggestion()
-  };
-
-  setSuggestions(newSuggestions);
-}
 
   // Chore function
-function getChoreSuggestion() {
-  const highEnergy = [
-    "Clean a whole room",
-    "Do a 15-minute speed clean",
-    "Vacuum all floors",
-    "Declutter a shelf",
-    "Take out the trash + recycling"
-  ];
+  function getChoreSuggestion() {
+    const highEnergy = [
+      "Clean a whole room",
+      "Do a 15-minute speed clean",
+      "Vacuum all floors",
+      "Declutter a shelf",
+      "Take out the trash + recycling",
+    ];
 
-  const mediumEnergy = [
-    "Do the dishes",
-    "Organize one drawer",
-    "Wipe down your desk",
-    "Start a laundry load",
-    "Put away 10 things"
-  ];
+    const mediumEnergy = [
+      "Do the dishes",
+      "Organize one drawer",
+      "Wipe down your desk",
+      "Start a laundry load",
+      "Put away 10 things",
+    ];
 
-  const lowEnergy = [
-    "Throw away 3 things",
-    "Wipe one surface",
-    "Sort one mail pile",
-    "Empty your bag or pockets",
-    "Clear off one small surface"
-  ];
+    const lowEnergy = [
+      "Throw away 3 things",
+      "Wipe one surface",
+      "Sort one mail pile",
+      "Empty your bag or pockets",
+      "Clear off one small surface",
+    ];
 
-  if (energy === "high") return getRandomItem(highEnergy);
-  if (energy === "medium") return getRandomItem(mediumEnergy);
-  return getRandomItem(lowEnergy);
-}
+    if (energy === "high") return getRandomItem(highEnergy);
+    if (energy === "medium") return getRandomItem(mediumEnergy);
+    return getRandomItem(lowEnergy);
+  }
 
   // Leisure function
-function getLeisureSuggestion() {
-  if (time === "mini" && energy === "low") {
-    return getRandomItem(leisureSuggestions.mini_low);
-  }
+  function getLeisureSuggestion() {
+    if (time === "mini" && energy === "low") {
+      return getRandomItem(leisureSuggestions.mini_low);
+    }
 
-  if (time === "short" && energy === "medium") {
-    return getRandomItem(leisureSuggestions.short_medium);
-  }
+    if (time === "short" && energy === "medium") {
+      return getRandomItem(leisureSuggestions.short_medium);
+    }
 
-  if (time === "medium" && energy === "high") {
-    return getRandomItem(leisureSuggestions.medium_high);
-  }
+    if (time === "medium" && energy === "high") {
+      return getRandomItem(leisureSuggestions.medium_high);
+    }
 
-  if (time === "long") {
-    return getRandomItem(leisureSuggestions.long_any);
-  }
+    if (time === "long") {
+      return getRandomItem(leisureSuggestions.long_any);
+    }
 
-  // fallback if combo isn't handled
-  return "Take a moment to breathe or do something comforting.";
-}
+    // fallback if combo isn't handled
+    return "Take a moment to breathe or do something comforting.";
+  }
 
   // work function
-function getWorkSuggestion() {
-  const key = `${mood}_${energy}`;
-  const options = workSuggestions[key] || workSuggestions.default;
-  return getRandomItem(options);
-}
+  function getWorkSuggestion() {
+    const key = `${mood}_${energy}`;
+    const options = workSuggestions[key] || workSuggestions.default;
+    return getRandomItem(options);
+  }
 
-
-    // clear all button function
-function clearAll() {
-  setMood("");
-  setTime("");
-  setEnergy("");
-  setSuggestions({
-    chore: "",
-    leisure: "",
-    work: ""
-  });
-  setSavedSuggestion(null);
-  localStorage.removeItem("savedSuggestion");
-}
-     // timer function
+  // clear all button function
+  function clearAll() {
+    setMood("");
+    setTime("");
+    setEnergy("");
+    setSuggestions({
+      chore: "",
+      leisure: "",
+      work: "",
+    });
+    setSavedSuggestion(null);
+    localStorage.removeItem("savedSuggestion");
+  }
+  // timer function
 
   function startTimer() {
-  if (isTimerRunning) return;
+    if (isTimerRunning) return;
 
-  setTimeLeft(300); // 5 minutes
-  setIsTimerRunning(true);
+    setTimeLeft(300); // 5 minutes
+    setIsTimerRunning(true);
 
-  const timerInterval = setInterval(() => {
-    setTimeLeft((prevTime) => {
-      if (prevTime <= 1) {
-        clearInterval(timerInterval);
-        setIsTimerRunning(false);
-        alert("🎉 Great job! You showed up for yourself. Keep it going!");
-        return 0;
-      }
-      return prevTime - 1;
-    });
-  }, 1000);
-}
-
-
-React.useEffect(() => {
-  const saved = localStorage.getItem("savedSuggestion");
-  if (saved) {
-    setSavedSuggestion(JSON.parse(saved));
+    const timerInterval = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timerInterval);
+          setIsTimerRunning(false);
+          alert("🎉 Great job! You showed up for yourself. Keep it going!");
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
   }
-}, []);
 
+  React.useEffect(() => {
+    const saved = localStorage.getItem("savedSuggestion");
+    if (saved) {
+      setSavedSuggestion(JSON.parse(saved));
+    }
+  }, []);
 
   return (
-    
-
     <div className="App">
       <h1>Untangled</h1>
-      <p>🧶 All knots make sense when you pause and check in. Three quick questions. One helpful suggestion.</p>
+      <p>
+        🧶 All knots make sense when you pause and check in. Three quick
+        questions. One helpful suggestion.
+      </p>
 
       {/* Mood Input */}
       <label htmlFor="mood">Mood:</label>
-      <select
-        id="mood"
-        value={mood}
-        onChange={(e) => setMood(e.target.value)}
-      >
+      <select id="mood" value={mood} onChange={(e) => setMood(e.target.value)}>
         <option value="">-- How are you feeling? --</option>
         <option value="calm">Calm</option>
         <option value="anxious">Anxious</option>
@@ -172,23 +165,19 @@ React.useEffect(() => {
         <option value="motivated">Motivated</option>
       </select>
 
-        {/* Time Input */}
+      {/* Time Input */}
       <label htmlFor="time">Time Available:</label>
-      <select
-        id="time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-      >
+      <select id="time" value={time} onChange={(e) => setTime(e.target.value)}>
         <option value="">-- How much time do you have? --</option>
-           <option value="mini">Less than 5 minutes</option>
+        <option value="mini">Less than 5 minutes</option>
         <option value="short">10-20 minutes</option>
         <option value="medium">30–60 minutes</option>
         <option value="long">1+ hour</option>
-  </select>
-             {/* Temporary display to test */}
+      </select>
+      {/* Temporary display to test */}
       <p>Your time: {time}</p>
 
-       {/* Energy Input */}
+      {/* Energy Input */}
       <label htmlFor="energy">Energy Level:</label>
       <select
         id="energy"
@@ -196,72 +185,92 @@ React.useEffect(() => {
         onChange={(e) => setEnergy(e.target.value)}
       >
         <option value="">-- How much energy do you have today? --</option>
-           <option value="low">Low</option>
+        <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
-  </select>
-             {/* Temporary display to test */}
+      </select>
+      {/* Temporary display to test */}
       <p>Your energy: {energy}</p>
-{/* Suggestion Button */}
-<button onClick={generateSuggestions}>Get Suggestions</button>
+      {/* Suggestion Button */}
+      <button onClick={generateSuggestions}>Get Suggestions</button>
 
-{/* Display Suggestions */}
-{suggestions.chore && (
-  <div className="results">
-    <h2>Here's what we suggest:</h2>
-    <ul>
-      <li><strong>Chore:</strong> {suggestions.chore}</li>
-      <li><strong>Leisure:</strong> {suggestions.leisure}</li>
-      <li><strong>Work:</strong> {suggestions.work}</li>
-    </ul>
-    {/* Show movie picks only if leisure includes "movie" */}
-{suggestions.leisure.toLowerCase().includes("movie") && (
-  <MovieSuggestion />
-)}
+      {/* Display Suggestions */}
+      {suggestions.chore && (
+        <div className="results">
+          <h2>Here's what we suggest:</h2>
+          <ul>
+            <li>
+              <strong>Chore:</strong> {suggestions.chore}
+            </li>
+            <li>
+              <strong>Leisure:</strong> {suggestions.leisure}
+            </li>
+            <li>
+              <strong>Work:</strong> {suggestions.work}
+            </li>
+          </ul>
+          {/* Show movie picks only if leisure includes "movie" */}
+          {suggestions.leisure.toLowerCase().includes("movie") && (
+            <MovieSuggestion />
+          )}
 
-    {/* Shuffle + Save + Clear Buttons */}
-<div className="button-group">
-  <button onClick={generateSuggestions}>🔀 Shuffle</button>
-<button
-  onClick={() => {
-    setSavedSuggestion(suggestions);
-    localStorage.setItem("savedSuggestion", JSON.stringify(suggestions));
-  }}
->
-  💾 Save
-</button>
+          {/* Shuffle + Save + Clear Buttons */}
+          <div className="button-group">
+            <button onClick={generateSuggestions}>🔀 Shuffle</button>
+            <button
+              onClick={() => {
+                setSavedSuggestion(suggestions);
+                localStorage.setItem(
+                  "savedSuggestion",
+                  JSON.stringify(suggestions)
+                );
+              }}
+            >
+              💾 Save
+            </button>
 
-    <button onClick={clearAll}>🧹 Clear All</button>
-  {savedSuggestion && (
-  <div className="saved">
-    <div className="focus-timer">
-  <p>This timer helps you stay committed to your choice for at least 5 minutes of focused effort.</p>
-  <h3>Focus Timer</h3>
-<p>
-  Time Left:{" "}
-  <span className="countdown-animate">
-    {Math.floor(timeLeft / 60).toString().padStart(2, "0")}:
-    {(timeLeft % 60).toString().padStart(2, "0")}
-  </span>
-</p>
-  <button onClick={startTimer} disabled={isTimerRunning}>
-    {isTimerRunning ? "Stay Focused..." : "Start Focus Timer"}
-  </button>
-</div>
+            <button onClick={clearAll}>🧹 Clear All</button>
+            {savedSuggestion && (
+              <div className="saved">
+                <div className="focus-timer">
+                  <p>
+                    This timer helps you stay committed to your choice for at
+                    least 5 minutes of focused effort.
+                  </p>
+                  <h3>Focus Timer</h3>
+                  <p>
+                    Time Left:{" "}
+                    <span className="countdown-animate">
+                      {Math.floor(timeLeft / 60)
+                        .toString()
+                        .padStart(2, "0")}
+                      :{(timeLeft % 60).toString().padStart(2, "0")}
+                    </span>
+                  </p>
+                  <button onClick={startTimer} disabled={isTimerRunning}>
+                    {isTimerRunning ? "Stay Focused..." : "Start Focus Timer"}
+                  </button>
+                </div>
 
-    <h2>Saved Suggestion</h2>
-    <ul>
-      <li><strong>Chore:</strong> {savedSuggestion.chore}</li>
-      <li><strong>Leisure:</strong> {savedSuggestion.leisure}</li>
-      <li><strong>Work:</strong> {savedSuggestion.work}</li>
-    </ul>
-  </div>
-)}
-</div>
-  </div>
-)}
+                <h2>Saved Suggestion</h2>
+                <ul>
+                  <li>
+                    <strong>Chore:</strong> {savedSuggestion.chore}
+                  </li>
+                  <li>
+                    <strong>Leisure:</strong> {savedSuggestion.leisure}
+                  </li>
+                  <li>
+                    <strong>Work:</strong> {savedSuggestion.work}
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
-);
+  );
 }
 
 export default App;

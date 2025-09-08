@@ -1,28 +1,28 @@
 @media screen and (max-width: 600px) {
   .button-group {
-    flex-direction: column;     
-    align-items: stretch;      
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .button-group > button {
-    width: 100%;               
+    width: 100%;
   }
 
   .saved {
-    order: 10;                 
+    order: 10;
     flex: 1 1 100%;
     width: 100%;
-    min-width: 0;              
+    min-width: 0;
     box-sizing: border-box;
   }
 
   .focus-timer {
     width: 100%;
     text-align: center;
-    font-size: 1rem;           
+    font-size: 1rem;
   }
 
   .timer-number {
-    font-size: 2rem;            
+    font-size: 2rem;
   }
 }
